@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.news);
     const { news } = this.state;
 
     return (
@@ -30,11 +29,20 @@ class App extends Component {
         <ul>
           {news.map(article => {
             return (
-              <li key={article.title}>
-                <span>Article Number: </span>
-                <span>{article.title}</span>
-                <span>{article.content}</span>
-              </li>
+              <div key={article.title}>
+                <br />
+                <div>
+                  <strong><h3>{article.title}</h3></strong>
+                </div>
+                <div>{article.author}</div>
+                <div>{article.content}</div>
+                <div>
+                  <a href={article.url}>{article.url}</a>
+                </div>
+                <div>{article.source.name}</div>
+                <img src={article.urlToImage} alt="" />
+                <br />
+              </div>
             );
           })}
         </ul>

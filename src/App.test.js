@@ -1,10 +1,20 @@
 import React from "react";
 import App from "./App";
 import { render, waitForElement } from "react-testing-library";
+import newsFeed from "./NewsFeed"
+
+// jest.mock("./NewsFeed");
 
 beforeEach(() => {
   fetch.resetMocks();
 });
+
+
+// skip.it('should call newsFeed', async () => {
+  
+//   expect(newsFeed).toHaveBeenCalled();
+// });
+
 
 it("renders with 3 news articles", async () => {
   const mockNewsFeedResponse = {
@@ -62,7 +72,7 @@ it("renders with 3 news articles", async () => {
 
   const { container, getByText } = render(<App />);
 
-  await waitForElement(() => getByText("Article Number:"));
+  await waitForElement(() => getByText("Ask HN: What is it like to run a VPN as a business?"));
   const articleList = container.querySelectorAll("ul li");
   expect(articleList).toHaveLength(3);
 });
